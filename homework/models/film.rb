@@ -42,7 +42,17 @@ class Film
   def customer_count
     return customers.count
   end
-  
+  def screenings()
+    sql = "SELECT * FROM screenings WHERE film_id = $1"
+    values = [@id]
+    screenings = SqlRunner.run(sql,values)
+    results = screenings.map{|screening|Screening.new(screening)}
+    return results
+  end
+
+  def most_popular_time()
+    screenings.max_by{|screening|screening.tickets_count}
+  end
   def self.all
     sql = "SELECT * FROM films"
     films = SqlRunner.run(sql)
