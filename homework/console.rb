@@ -8,6 +8,7 @@ require( 'pry' )
 
 Customer.delete_all()
 Film.delete_all()
+Screening.delete_all()
 
 customer1 = Customer.new("name" => "craig", "funds" => 100)
 customer1.save()
@@ -25,6 +26,7 @@ film3.save()
 film4 = Film.new("title"=> "Crazy Rich Asians", "price" => 10)
 film4.save()
 film5 = Film.new("title"=> "Incredibles 2", "price" => 10)
+film5.save()
 
 screening1 = Screening.new("start_time"=> "20:00", "empty_seats" => 20, "film_id" => film1.id)
 screening1.save()
