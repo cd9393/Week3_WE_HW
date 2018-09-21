@@ -29,7 +29,7 @@ class Film
     SqlRunner.run(sql, values)
   end
 
-  def customers
+  def customers # we were told to replace  film_id with screening_id feel like this major complicated this fucntion.
     sql = "SELECT customers.* FROM
      tickets INNER JOIN screenings ON screenings.id = tickets.screening_id INNER JOIN customers ON customer_id = customers.id
      WHERE film_id = $1"
