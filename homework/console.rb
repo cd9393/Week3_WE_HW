@@ -28,11 +28,17 @@ film5 = Film.new("title"=> "Incredibles 2", "price" => 10)
 
 screening1 = Screening.new("start_time"=> "20:00", "empty_seats" => 20, "film_id" => film1.id)
 screening1.save()
-screening2 = Screening.new("start_time"=> "19:30", "empty_seats" => 20, "film_id" => film2.id)
+screening2 = Screening.new("start_time"=> "19:30", "empty_seats" => 20, "film_id" => film3.id)
 screening2.save()
 screening3 = Screening.new("start_time"=> "10:00", "empty_seats" => 20, "film_id" => film5.id)
 screening3.save()
 
+ticket1 = Ticket.new("customer_id" => customer1.id, "screening_id" => screening2.id )
+ticket1.save()
+ticket2 = Ticket.new("customer_id" => customer2.id, "screening_id" => screening2.id )
+ticket2.save()
+ticket3 = Ticket.new("customer_id" => customer3.id, "screening_id" => screening3.id )
+ticket3.save()
 
 
 binding.pry
