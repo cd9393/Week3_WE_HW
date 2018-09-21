@@ -53,6 +53,14 @@ class Film
   def most_popular_time()
     screenings.max_by{|screening|screening.tickets_count}
   end
+
+  def self.get_by_id(id)
+    sql = "SELECT * FROM films WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql,values).first
+    return Customer.new(result)
+  end
+
   def self.all
     sql = "SELECT * FROM films"
     films = SqlRunner.run(sql)
