@@ -18,6 +18,18 @@ class Screening
     @id = screening["id"].to_i
   end
 
+  def tickets()
+    sql = " SELECT * FROM tickets WHERE screening_id = $1"
+    values = [@id]
+    tickets = SqlRunner.run(sql,values)
+    result = tickets.map{|ticket| Ticket.new(ticket)}
+    return result
+  end
+
+  def tickets_count()
+    return tickets.count
+  end
+
   def self.all
     sql = "SELECT * FROM screenings"
     screenings = SqlRunner.run(sql)
