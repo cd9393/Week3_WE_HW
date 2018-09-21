@@ -2,6 +2,7 @@
 require_relative( 'models/customer' )
 require_relative( 'models/film' )
 require_relative( 'models/ticket' )
+require_relative( 'models/screening')
 
 require( 'pry' )
 
@@ -25,6 +26,12 @@ film4 = Film.new("title"=> "Crazy Rich Asians", "price" => 10)
 film4.save()
 film5 = Film.new("title"=> "Incredibles 2", "price" => 10)
 
+screening1 = Screening.new("start_time"=> "20:00", "empty_seats" => 20, "film_id" => film1.id)
+screening1.save()
+screening2 = Screening.new("start_time"=> "19:30", "empty_seats" => 20, "film_id" => film2.id)
+screening2.save()
+screening3 = Screening.new("start_time"=> "10:00", "empty_seats" => 20, "film_id" => film5.id)
+screening3.save()
 
 
 
