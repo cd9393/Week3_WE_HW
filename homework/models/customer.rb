@@ -51,6 +51,27 @@ class Customer
     tickets.count
   end
 
+  def pay_ticket(price)
+    @funds -= price
+  end
+
+  def buy_ticket(screening)
+    sql =  "SELECT films.* FROM
+     screenings INNER JOIN films ON film_id = films.id WHERE films.id = $1"
+     values = [screening.film_id]
+
+     film_at_screening = SqlRunner.run(sql,values)
+     result = film_at_screening.first
+     price =  result["price"].to_i
+     if @funds > price && screening.seats_available
+       pay_ticket(price)
+       screening.sell_ticket
+       return "Ticket successfully purchased"
+     else
+       return "Unsuccessful"
+     end 
+  end
+
   def self.get_by_id(id)
     sql = "SELECT * FROM customers WHERE id = $1"
     values = [id]

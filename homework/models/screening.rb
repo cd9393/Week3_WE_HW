@@ -30,6 +30,15 @@ class Screening
     return tickets.count
   end
 
+  def seats_available
+    @empty_seats > 0
+  end
+
+  def sell_ticket
+    @empty_seats -= 1
+    update
+  end
+
   def self.all
     sql = "SELECT * FROM screenings"
     screenings = SqlRunner.run(sql)
